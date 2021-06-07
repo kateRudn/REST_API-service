@@ -8,6 +8,8 @@ A simple REST API is a multi-user service for users to work with their data. Sup
 - updating a joke by id,
 - deleting a joke by id.
 
+Run: venv\Scripts\python.exe run.py
+
 Commands:
 
 1. User registration:
