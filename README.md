@@ -13,7 +13,7 @@ Run: venv\Scripts\python.exe run.py
 Commands:
 
 1. User registration:
-curl -i -u <USERNAME>:<PASSWORD> -X POST http://localhost:5000/registration
+curl -i -u USERNAME:PASSWORD -X POST http://localhost:5000/registration
 
 2. Getting a list of the user's jokes:
 curl -i -u <USERNAME>:<PASSWORD> http://localhost:5000/jokes
