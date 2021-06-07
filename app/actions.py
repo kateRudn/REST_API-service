@@ -1,8 +1,7 @@
 import json
-from app import app
+from app import app, db, database
 from flask import jsonify, abort, make_response, request
 from flask_httpauth import HTTPBasicAuth
-from app import db, database
 import requests
 import hashlib
 
@@ -41,8 +40,8 @@ def createUser():
     hashPassword = hash(password)
     if not correctUser(username):
         return jsonify({'Error': 'user is in database'})
-    u = database.User(userName=username, userPassword=hashPassword)
-    db.session.add(u)
+    user = database.User(userName=username, userPassword=hashPassword)
+    db.session.add(user)
     db.session.commit()
     return jsonify({'Username': username})
 
@@ -56,8 +55,8 @@ def getJokes():
     for j in jokes:
         result.append({'id': str(j.idJoke),
                        'joke': str(j.contentJoke)})
-    # d = json.dumps(result)
-    return str(result)
+    jsonResult = json.dumps(result, indent=5)
+    return str(jsonResult)
 
 @app.route('/jokes/<int:id>', methods=['GET']) # get joke for user by id
 @auth.login_required
